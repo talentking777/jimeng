@@ -1,0 +1,59 @@
+@import 'variables';
+
+.main-side-bar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+  height: 100%;
+  width: 76px;
+  padding: 20px 10px;
+
+  .menu-item {
+    color: $text-primary;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 12px;
+    cursor: pointer;
+    padding-bottom: 11px;
+
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    span {
+      font-size: 11px;
+      line-height: 18px;
+    }
+  }
+
+  .icon-menu-item {
+    color: $text-secondary;
+    min-height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    &:hover {
+      color: $text-primary;
+    }
+  }
+}
+
+.logo {
+  width: 40px;
+  height: 40px;
+}
+
+.menu-item-icon {
+  width: 18px;
+  height: 18px;
+}

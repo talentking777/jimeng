@@ -1,0 +1,32 @@
+.dreamina {
+  height: 100vh;
+}
+
+.main-layout {
+  display: flex;
+  height: 100%;
+  background-color: var(--bg-body);
+}
+
+.main-layout-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.main-layout-content::-webkit-scrollbar {
+  /* width: 16px; */
+}
+.main-layout-content::-webkit-scrollbar-corner {
+  /* background: transparent; */
+}
+.main-layout-content::-webkit-scrollbar-thumb {
+  /* border-radius: 20px; */
+}
+
+.main-children-content {
+  padding: 0 44px 0 40px;
+}

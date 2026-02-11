@@ -1,0 +1,10 @@
+@import './variables';
+
+html body[lv-theme=dark] {
+  --bg-body: #0f0f12;
+  --text-primary: $text-primary;
+}
+
+body {
+  margin: 0;
+}

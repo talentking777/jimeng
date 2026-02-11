@@ -1,0 +1,85 @@
+@import "variables";
+
+.filter-bar {
+  display: flex;
+  padding: 18px 0;
+}
+
+.search-input {
+  margin-left: 8px;
+  width: 310px;
+}
+
+.home-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto 40px;
+  max-width: 1200px;
+  padding-top: 100px;
+
+  .title-content {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 24px;
+    color: $text-primary;
+    padding-bottom: 40px;
+
+    .selected-option {
+      color: $brand-main-default;
+      cursor: pointer;
+    }
+  }
+}
+
+.ai-search-content {
+  padding: 14px 16px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-sizing: border-box;
+  backdrop-filter: blur(80px);
+  background: #202127b8;
+  border-radius: 24px;
+  width: 100%;
+
+  .search-content {
+    display: flex;
+    gap: 12px;
+
+    .reference-group {
+      width: 48px;
+      height: 64px;
+      padding: 22px 8px;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transform: rotate(-8deg);
+      }
+    }
+
+    .input-content {
+      flex: 1;
+
+      textarea {
+        background-color: transparent;
+        color: $text-primary;
+        border: none;
+        height: 96px;
+        width: 100%;
+        appearance: none;
+        outline: none;
+        resize: none;
+        overflow: overlay;
+      }
+    }
+  }
+
+  .toolbar-setting {
+    display: flex;
+    gap: 4px;
+  }
+}
