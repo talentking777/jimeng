@@ -1,8 +1,12 @@
 @import "variables";
 
 .filter-bar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
   display: flex;
   padding: 18px 0;
+  background-color: $bg-body;
 }
 
 .search-input {
