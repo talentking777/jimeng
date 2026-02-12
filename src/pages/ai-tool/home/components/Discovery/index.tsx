@@ -1,8 +1,10 @@
-import { Masonry } from 'antd';
+import { Carousel, Masonry } from 'antd';
 
 import styles from './styles.module.scss';
 
 const imageList = [
+  '',
+  '',
   'https://images.unsplash.com/photo-1510001618818-4b4e3d86bf0f',
   'https://images.unsplash.com/photo-1507513319174-e556268bb244',
   'https://images.unsplash.com/photo-1474181487882-5abf3f0ba6c2',
@@ -81,7 +83,23 @@ const Discovery = () => {
           key: `item-${index}`,
           data: img,
         }))}
-        itemRender={({ data }) => <DiscoveryItem src={data} />}
+        itemRender={({ data, index }) => {
+          if (index > 1) return <DiscoveryItem src={data} />;
+          if (index === 0)
+            return (
+              <div className={styles['carousel']}>
+                <Carousel arrows>
+                  <div className={styles['carousel-item']}>
+                    <img src='https://p6-heycan-hgt-sign.byteimg.com/tos-cn-i-31yrirwxg7/2f7c2f660bb64c808498ae3c29ee23a7~tplv-3jr8j4ixpe-resize:480:480.webp?lk3s=8e790bc3&x-expires=1802422599&x-signature=ZY9ZmZR%2FJhF3nJVU9KY%2FpjQCXrM%3D' />
+                  </div>
+                  <div className={styles['carousel-item']}>
+                    <img src='https://p3-heycan-hgt-sign.byteimg.com/tos-cn-i-31yrirwxg7/3b0d742a1d18420d91bab7455f6a1571~tplv-3jr8j4ixpe-resize:480:480.webp?lk3s=8e790bc3&x-expires=1802422599&x-signature=ebbZ5sgTp5%2BfsCVKljSFFDWhsss%3D' />
+                  </div>
+                </Carousel>
+              </div>
+            );
+          return <div className={styles['carousel-hidden']}></div>;
+        }}
       />
     </div>
   );

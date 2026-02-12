@@ -67,3 +67,20 @@
 .discovery-item:hover img {
   transform: scale(1.02);
 }
+
+.carousel {
+  width: calc(200% + 2px);
+  height: 15vw;
+
+  &-item {
+    img {
+      width: 100%;
+      height: 15vw;
+      object-fit: cover;
+    }
+  }
+
+  &-hidden {
+    height: 15vw;
+  }
+}
