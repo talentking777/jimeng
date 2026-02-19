@@ -1,14 +1,19 @@
 import { Dropdown } from 'antd';
-import { ReactComponent as APIImg } from 'assets/api.svg';
 import { ReactComponent as HomeImg } from 'assets/home.svg';
 import LogoImg from 'assets/logo.png';
 import { ReactComponent as MenuImg } from 'assets/menu.svg';
 import { ReactComponent as MenuAIImg } from 'assets/menu-ai.svg';
+import { ReactComponent as MenuAPIImg } from 'assets/menu-api.svg';
+import { ReactComponent as MenuAssetImg } from 'assets/menu-asset.svg';
+import { ReactComponent as MenuAssetActiveImg } from 'assets/menu-asset-active.svg';
 import { ReactComponent as MenuCanvasImg } from 'assets/menu-canvas.svg';
+import { ReactComponent as MenuCanvasActiveImg } from 'assets/menu-canvas-active.svg';
 import { ReactComponent as MenuChangeLogImg } from 'assets/menu-change-log.svg';
+import { ReactComponent as MenuGenerateImg } from 'assets/menu-generate.svg';
+import { ReactComponent as MenuGenerateActiveImg } from 'assets/menu-generate-active.svg';
 import { ReactComponent as MenuModeImg } from 'assets/menu-mode.svg';
+import { ReactComponent as MenuPhoneImg } from 'assets/menu-phone.svg';
 import { ReactComponent as MenuPlatformAggrement } from 'assets/menu-platform-agreement.svg';
-import { ReactComponent as PhoneImg } from 'assets/phone.svg';
 
 import styles from './styles.module.scss';
 
@@ -24,24 +29,27 @@ const MainSideBar = () => {
           <span>灵感</span>
         </div>
         <div className={styles['menu-item']}>
-          <HomeImg />
+          <MenuGenerateImg className={styles['deactive']} />
+          <MenuGenerateActiveImg className={styles['active']} />
           <span>生成</span>
         </div>
         <div className={styles['menu-item']}>
-          <HomeImg />
+          <MenuAssetImg className={styles['deactive']} />
+          <MenuAssetActiveImg className={styles['active']} />
           <span>资产</span>
         </div>
         <div className={styles['menu-item']}>
-          <MenuCanvasImg />
+          <MenuCanvasImg className={styles['deactive']} />
+          <MenuCanvasActiveImg className={styles['active']} />
           <span>画布</span>
         </div>
       </div>
       <div>
         <div className={styles['icon-menu-item']}>
-          <PhoneImg />
+          <MenuPhoneImg />
         </div>
         <div className={styles['icon-menu-item']}>
-          <APIImg />
+          <MenuAPIImg />
         </div>
         <Dropdown
           placement='topRight'

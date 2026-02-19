@@ -27,6 +27,24 @@
       font-size: 11px;
       line-height: 18px;
     }
+
+    .active {
+      display: none;
+    }
+
+    .deactive {
+      display: block;
+    }
+
+    &:hover {
+      .active {
+        display: block;
+      }
+
+      .deactive {
+        display: none;
+      }
+    }
   }
 
   .icon-menu-item {
