@@ -1,3 +1,4 @@
+import { ArrowUpOutlined, DownOutlined } from '@ant-design/icons';
 import type { SelectInfo } from '@rc-component/menu/es/interface';
 import { Button, ConfigProvider, Dropdown, Input, Segmented, theme } from 'antd';
 import { useEffect, useState } from 'react';
@@ -23,20 +24,7 @@ const AIToolHome = () => {
     boxShadow: token.boxShadowSecondary,
   };
 
-  useEffect(() => {
-    // const data = {
-    //   model: 'doubao-seedream-4-5-251128',
-    //   prompt:
-    //     "A vibrant editorial close-up portrait, the model's gaze is sharp, wearing a sculptural hat, rich color blocking, sharp eye focus, shallow depth of field, with the aesthetic style of a Vogue magazine cover, shot in medium format, strong studio lighting effects.",
-    //   size: '2K',
-    // };
-    // axios({
-    //   method: 'POST',
-    //   url: 'https://ark.cn-beijing.volces.comark.ap-southeast.bytepluses.com/api/v3/contents/generations/tasks',
-    //   headers: { Authorization: `Bearer 6a40e474-a9bc-4443-8e07-0f5c17281a11`, 'Content-Type': 'application/json' },
-    //   data,
-    // });
-  }, []);
+  useEffect(() => {}, []);
 
   const handleChangeGenerateType = (event: SelectInfo) => {
     setGenerateType(event.key as OBJECT_GENERATE_TYPE);
@@ -56,6 +44,17 @@ const AIToolHome = () => {
         );
       default:
         return null;
+    }
+  };
+
+  const isBtnActionDisabled = () => {
+    switch (generateType) {
+      case OBJECT_GENERATE_TYPE.IMAGE_GENERATION:
+        return !imagePrompt;
+      case OBJECT_GENERATE_TYPE.VIDEO_GENERATION:
+        return !videoPrompt;
+      default:
+        return true;
     }
   };
 
@@ -112,7 +111,10 @@ const AIToolHome = () => {
                 onSelect: handleChangeGenerateType,
               }}
             >
-              <Button icon={getGenerateTypeIconNode(generateType)}>{OBJECT_GENERATE_TYPE_VALUE[generateType].label}</Button>
+              <Button className={styles['btn-generate-type']} icon={getGenerateTypeIconNode(generateType)}>
+                {OBJECT_GENERATE_TYPE_VALUE[generateType].label}
+                <DownOutlined />
+              </Button>
             </Dropdown>
             <Dropdown
               trigger={['click']}
@@ -147,6 +149,8 @@ const AIToolHome = () => {
             <Dropdown trigger={['click']} menu={{ items: [] }} popupRender={() => <div style={contentStyle}>123</div>}>
               <Button>21:9 高清 2K</Button>
             </Dropdown>
+
+            <Button shape='circle' icon={<ArrowUpOutlined />} className={styles['btn-action']} disabled={isBtnActionDisabled()} />
           </div>
         </div>
         <HomeHeaderBanner />

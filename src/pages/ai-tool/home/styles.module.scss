@@ -85,5 +85,13 @@
   .toolbar-setting {
     display: flex;
     gap: 4px;
+
+    .btn-action {
+      margin-left: auto;
+    }
+
+    .btn-generate-type {
+      line-height: 100%;
+    }
   }
 }
