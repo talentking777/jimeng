@@ -64,16 +64,18 @@ const AIToolHome = () => {
         <div className={styles['title-content']}>
           <div>开启你的</div>
           <Dropdown
+            trigger={['click']}
             menu={{
               items: [
-                { label: 'Agent 模式', key: '1' },
-                { label: '图片生成', key: '2' },
-                { label: '视频生成', key: '3' },
-                { label: '数字人', key: '4' },
-                { label: '动作模仿', key: '5' },
+                // { label: 'Agent 模式', key: '1' },
+                { label: '图片生成', key: OBJECT_GENERATE_TYPE.IMAGE_GENERATION },
+                { label: '视频生成', key: OBJECT_GENERATE_TYPE.VIDEO_GENERATION },
+                // { label: '数字人', key: '4' },
+                // { label: '动作模仿', key: '5' },
               ],
               selectable: true,
               selectedKeys: [generateType],
+              onSelect: handleChangeGenerateType,
             }}
           >
             <div className={styles['selected-option']}>{OBJECT_GENERATE_TYPE_VALUE[generateType].label}</div>
