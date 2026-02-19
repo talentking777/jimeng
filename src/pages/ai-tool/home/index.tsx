@@ -78,7 +78,10 @@ const AIToolHome = () => {
               onSelect: handleChangeGenerateType,
             }}
           >
-            <div className={styles['selected-option']}>{OBJECT_GENERATE_TYPE_VALUE[generateType].label}</div>
+            <div className={styles['selected-option']}>
+              {OBJECT_GENERATE_TYPE_VALUE[generateType].label}
+              <DownOutlined />
+            </div>
           </Dropdown>
           <div>即刻造梦！</div>
         </div>
