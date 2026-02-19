@@ -1,4 +1,7 @@
+import type { SelectInfo } from '@rc-component/menu/es/interface';
 import { Button, ConfigProvider, Dropdown, Input, Segmented, theme } from 'antd';
+import { useEffect, useState } from 'react';
+import { getGenerateTypeIconNode, OBJECT_GENERATE_TYPE, OBJECT_GENERATE_TYPE_VALUE } from 'utils/enums';
 
 import Discovery from './components/Discovery';
 import Event from './components/Event';
@@ -10,10 +13,50 @@ const { useToken } = theme;
 
 const AIToolHome = () => {
   const { token } = useToken();
+  const [generateType, setGenerateType] = useState<OBJECT_GENERATE_TYPE>(OBJECT_GENERATE_TYPE.IMAGE_GENERATION);
+  const [imagePrompt, setImagePrompt] = useState<string>('');
+  const [videoPrompt, setVideoPrompt] = useState<string>('');
+
   const contentStyle: React.CSSProperties = {
     backgroundColor: token.colorBgElevated,
     borderRadius: token.borderRadiusLG,
     boxShadow: token.boxShadowSecondary,
+  };
+
+  useEffect(() => {
+    // const data = {
+    //   model: 'doubao-seedream-4-5-251128',
+    //   prompt:
+    //     "A vibrant editorial close-up portrait, the model's gaze is sharp, wearing a sculptural hat, rich color blocking, sharp eye focus, shallow depth of field, with the aesthetic style of a Vogue magazine cover, shot in medium format, strong studio lighting effects.",
+    //   size: '2K',
+    // };
+    // axios({
+    //   method: 'POST',
+    //   url: 'https://ark.cn-beijing.volces.comark.ap-southeast.bytepluses.com/api/v3/contents/generations/tasks',
+    //   headers: { Authorization: `Bearer 6a40e474-a9bc-4443-8e07-0f5c17281a11`, 'Content-Type': 'application/json' },
+    //   data,
+    // });
+  }, []);
+
+  const handleChangeGenerateType = (event: SelectInfo) => {
+    setGenerateType(event.key as OBJECT_GENERATE_TYPE);
+  };
+
+  const renderInputContent = () => {
+    switch (generateType) {
+      case OBJECT_GENERATE_TYPE.IMAGE_GENERATION:
+        return <textarea placeholder='请描述你想生成的图片' value={imagePrompt} onChange={e => setImagePrompt(e.target.value)} />;
+      case OBJECT_GENERATE_TYPE.VIDEO_GENERATION:
+        return (
+          <textarea
+            placeholder='输入文字，描述你想创作的画面内容、运动方式等。例如：一个3D形象的小男孩，在公园滑滑板。'
+            value={videoPrompt}
+            onChange={e => setVideoPrompt(e.target.value)}
+          />
+        );
+      default:
+        return null;
+    }
   };
 
   return (
@@ -30,9 +73,11 @@ const AIToolHome = () => {
                 { label: '数字人', key: '4' },
                 { label: '动作模仿', key: '5' },
               ],
+              selectable: true,
+              selectedKeys: [generateType],
             }}
           >
-            <div className={styles['selected-option']}>图片生成</div>
+            <div className={styles['selected-option']}>{OBJECT_GENERATE_TYPE_VALUE[generateType].label}</div>
           </Dropdown>
           <div>即刻造梦！</div>
         </div>
@@ -41,9 +86,7 @@ const AIToolHome = () => {
             <div className={styles['reference-group']}>
               <img src='https://p26-dreamina-sign.byteimg.com/tos-cn-i-tb4s082cfz/a91b110ffecb4700aac1fd4bb054bbed~tplv-tb4s082cfz-aigc_resize_loss:720:720.webp?lk3s=4fa96020&x-expires=1772928000&x-signature=If%2B8LQ6B0W6NmB26OhiEjbc73wM%3D' />
             </div>
-            <div className={styles['input-content']}>
-              <textarea placeholder='Seedance 2.0 全能参考，视频创意无限可能'></textarea>
-            </div>
+            <div className={styles['input-content']}>{renderInputContent()}</div>
           </div>
           <div className={styles['toolbar-setting']}>
             <Dropdown
@@ -51,15 +94,25 @@ const AIToolHome = () => {
               menu={{
                 selectable: true,
                 items: [
-                  { label: 'Agent 模式', key: '1' },
-                  { label: '图片生成', key: '2' },
-                  { label: '视频生成', key: '3' },
-                  { label: '数字人', key: '4' },
-                  { label: '动作模仿', key: '5' },
+                  // { label: 'Agent 模式', key: '1' },
+                  {
+                    label: '图片生成',
+                    key: OBJECT_GENERATE_TYPE.IMAGE_GENERATION,
+                    icon: getGenerateTypeIconNode(OBJECT_GENERATE_TYPE.IMAGE_GENERATION),
+                  },
+                  {
+                    label: '视频生成',
+                    key: OBJECT_GENERATE_TYPE.VIDEO_GENERATION,
+                    icon: getGenerateTypeIconNode(OBJECT_GENERATE_TYPE.VIDEO_GENERATION),
+                  },
+                  // { label: '数字人', key: '4' },
+                  // { label: '动作模仿', key: '5' },
                 ],
+                selectedKeys: [generateType],
+                onSelect: handleChangeGenerateType,
               }}
             >
-              <Button>图片生成</Button>
+              <Button icon={getGenerateTypeIconNode(generateType)}>{OBJECT_GENERATE_TYPE_VALUE[generateType].label}</Button>
             </Dropdown>
             <Dropdown
               trigger={['click']}

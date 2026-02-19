@@ -11,6 +11,7 @@
     "@types/node": "^16.18.126",
     "@types/react-dom": "^19.2.3",
     "antd": "^6.3.0",
+    "axios": "^1.13.5",
     "classnames": "^2.5.1",
     "framer-motion": "^12.29.2",
     "react": "^19.2.4",
