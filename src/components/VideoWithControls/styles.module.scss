@@ -1,0 +1,103 @@
+.wrap {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #000;
+
+  .player {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+}
+
+.controls {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 16px 20px 18px;
+  background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.4) 15%, rgba(0, 0, 0, 0.75) 100%);
+  border-radius: 0 0 16px 16px;
+  color: #fff;
+}
+
+.progress {
+  position: relative;
+  height: 4px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.35);
+  cursor: pointer;
+  margin-bottom: 12px;
+}
+
+.progressTrack {
+  position: absolute;
+  inset: 0;
+  border-radius: 2px;
+  pointer-events: none;
+}
+
+.progressFill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  border-radius: 2px;
+  background: #fff;
+  pointer-events: none;
+  transition: width 0.08s linear;
+}
+
+.progressThumb {
+  position: absolute;
+  top: 50%;
+  width: 12px;
+  height: 12px;
+  margin-left: -6px;
+  margin-top: -6px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.2);
+  pointer-events: none;
+  transition: left 0.08s linear;
+}
+
+.controlsBar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.ctrlBtn {
+  color: #fff !important;
+  padding: 4px 6px;
+  line-height: 1;
+
+  &:hover {
+    color: rgba(255, 255, 255, 0.9) !important;
+  }
+}
+
+.icon {
+  font-size: 18px;
+}
+
+.time {
+  font-size: 14px;
+  color: #fff;
+  margin-left: 2px;
+  font-variant-numeric: tabular-nums;
+}
+
+.spacer {
+  flex: 1;
+}
+
+.quality {
+  font-size: 14px;
+  color: #fff;
+}
