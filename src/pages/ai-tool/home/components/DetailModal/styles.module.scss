@@ -1,12 +1,29 @@
 @import "variables";
 
-.detail-modal {
-  position: fixed;
-  top: 0;
-  left: 76px;
-  background: $bg-body;
-  z-index: 1000;
-  width: 100%;
-  height: 100%;
-  display: none;
+.detail {
+  &-modal {
+    position: fixed;
+    top: 0;
+    left: 76px;
+    background: $bg-body;
+    z-index: 1000;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    padding: 20px 24px 0px;
+
+    .preview-area {
+      flex: 1;
+    }
+  }
+
+  &-area {
+    width: 440px;
+    padding: 8px 23px 0 40px;
+    border-image-outset: 0;
+    border-image-repeat: stretch;
+    border-image-slice: 1;
+    border-image-source: linear-gradient(180deg, hsla(0, 0%, 100%, 0) -1.77%, rgba(215, 218, 224, .15) 23.67%, rgba(183, 189, 200, .276) 49.12%, rgba(170, 177, 190, .15) 74.56%, rgba(122, 133, 153, 0));
+  }
+
 }

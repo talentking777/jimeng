@@ -19,6 +19,7 @@ const AIToolHome = () => {
   const [generateType, setGenerateType] = useState<OBJECT_GENERATE_TYPE>(OBJECT_GENERATE_TYPE.IMAGE_GENERATION);
   const [imagePrompt, setImagePrompt] = useState<string>('');
   const [videoPrompt, setVideoPrompt] = useState<string>('');
+  const [openDetail, setOpenDetail] = useState<boolean>(true);
 
   const contentStyle: React.CSSProperties = {
     backgroundColor: token.colorBgElevated,
@@ -62,8 +63,13 @@ const AIToolHome = () => {
 
   const handleGenerateObject = () => {
     api.ImageGenerationApi.generateImage(imagePrompt).then(res => {
-      console.log(res);
+      console.log(res.data[0]);
+      setOpenDetail(true);
     });
+  };
+
+  const handleCloseDetail = () => {
+    setOpenDetail(false);
   };
 
   return (
@@ -197,7 +203,7 @@ const AIToolHome = () => {
       <ShortFilm />
       <Event />
 
-      <DetailModal />
+      {openDetail && <DetailModal onClose={handleCloseDetail} />}
     </>
   );
 };

@@ -5,7 +5,7 @@ import { createRequestFunction } from './common';
 import { ImageGenerationResponse } from './interface/image-generation';
 
 export default class ImageGenerationApi extends BaseApi {
-  generateImage(prompt: string): AxiosPromise<ImageGenerationResponse> {
+  generateImage(prompt: string): AxiosPromise<Array<ImageGenerationResponse>> {
     const localVarAxiosArgs: RequestArgs = {
       url: '/image-generation/create',
       options: {
