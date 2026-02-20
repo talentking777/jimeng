@@ -1,9 +1,11 @@
 import { ArrowUpOutlined, DownOutlined } from '@ant-design/icons';
 import type { SelectInfo } from '@rc-component/menu/es/interface';
 import { Button, ConfigProvider, Dropdown, Input, Segmented, theme } from 'antd';
+import api from 'api';
 import { useEffect, useState } from 'react';
 import { getGenerateTypeIconNode, OBJECT_GENERATE_TYPE, OBJECT_GENERATE_TYPE_VALUE } from 'utils/enums';
 
+import DetailModal from './components/DetailModal';
 import Discovery from './components/Discovery';
 import Event from './components/Event';
 import HomeHeaderBanner from './components/HeaderBanner';
@@ -58,8 +60,14 @@ const AIToolHome = () => {
     }
   };
 
+  const handleGenerateObject = () => {
+    api.ImageGenerationApi.generateImage(imagePrompt).then(res => {
+      console.log(res);
+    });
+  };
+
   return (
-    <div>
+    <>
       <div className={styles['home-header']}>
         <div className={styles['title-content']}>
           <div>开启你的</div>
@@ -155,7 +163,13 @@ const AIToolHome = () => {
               <Button>21:9 高清 2K</Button>
             </Dropdown>
 
-            <Button shape='circle' icon={<ArrowUpOutlined />} className={styles['btn-action']} disabled={isBtnActionDisabled()} />
+            <Button
+              shape='circle'
+              icon={<ArrowUpOutlined />}
+              className={styles['btn-action']}
+              disabled={isBtnActionDisabled()}
+              onClick={handleGenerateObject}
+            />
           </div>
         </div>
         <HomeHeaderBanner />
@@ -182,7 +196,9 @@ const AIToolHome = () => {
       <Discovery />
       <ShortFilm />
       <Event />
-    </div>
+
+      <DetailModal />
+    </>
   );
 };
 

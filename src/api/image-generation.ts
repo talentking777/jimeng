@@ -10,6 +10,9 @@ export default class ImageGenerationApi extends BaseApi {
       url: '/image-generation/create',
       options: {
         method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
         data: JSON.stringify({
           prompt,
         }),
